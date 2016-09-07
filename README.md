@@ -18,6 +18,7 @@
 * 在根目录下执行`npm install`
 * 安装 ionic CLI `npm install -g ionic@beta`
 * 根目录下执行`ionic serve`
+* 若在安卓上运行，执行`ionic platform add android` `ionic run android`;
 
 ###常见问题：<br>
 * 如果在app.ts中设置tabsHideOnSubPages:false,在push页面里将展示底部导航条，modal及在menu里push的页面都不会展示
