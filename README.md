@@ -45,9 +45,9 @@ this.mySelectedIndex = navParams.data.tabIndex || 0;
 
 ###参考资料：<br>
 * 官网：http://ionicframework.com/
-* github:github.com/driftyco/ionic
-* Icons:ionicons.com
-* ngCordova:ngcordova.com
+* github:https://github.com/driftyco/ionic
+* Icons:http://ionicons.com
+* ngCordova:http://ngcordova.com
 * 社区:https://forum.ionicframework.com/<br>
        https://github.com/driftyco/ionic
 * typescript官网：https://zhongsp.gitbooks.io/typescript-handbook/content/
