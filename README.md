@@ -19,7 +19,7 @@
 * 根目录下执行`ionic serve`
 
 ###常见问题：<br>
-* 如果在app.ts中设置tabsHideOnSubPages:false,在push页面里将展示底部工具条，modal及在menu里push的页面都不会展示
+* 如果在app.ts中设置tabsHideOnSubPages:false,在push页面里将展示底部导航条，modal及在menu里push的页面都不会展示
 * ionicBootstrap第二个参数是自定义的providers，在此注入，所有页面只要import就可以直接使用
 * 嵌套在<ion-scroll></ion-scroll>内可滑动，但宽度、高度要自己设置。默认有滚动条，下面代码消除滚动条:<br>
 ```
