@@ -10,7 +10,7 @@
 * 极光推送集成在app.ts且测试通过。插件地址：https://github.com/jpush/jpush-phonegap-plugin<br>
 * 聊天功能仅实现了socket连接，接收数据，发送数据。具体的聊天页面没有做。插件地址:https://github.com/Tlantic/cdv-socket-plugin<br>
 * 在个人中心页面，登录的账号密码随便填。<br>
-* 登录状态下，点击“账户管理”，里面有很多native，都已经过测试，需安装相应插件。<br>
+* 登录状态下，点击“账户管理”，里面有很多native，都已经过测试，需安装相应插件。插件地址：http://ionicframework.com/docs/v2/native/<br>
 * 支付页面，前两个是支付成功状态，最后一个是支付失败状态。<br>
 
 ###启动：<br>
