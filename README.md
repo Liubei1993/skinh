@@ -18,6 +18,31 @@
 * 安装 ionic CLI `npm install -g ionic@beta`
 * 根目录下执行`ionic serve`
 
+###常见问题：<br>
+* 如果在app.ts中设置tabsHideOnSubPages:false,在push页面里将展示底部工具条，modal及在menu里push的页面都不会展示
+* ionicBootstrap第二个参数是自定义的providers，在此注入，所有页面只要import就可以直接使用
+* 嵌套在<ion-scroll></ion-scroll>内可滑动，但宽度、高度要自己设置。默认有滚动条，下面代码消除滚动条:<br>
+```
+  ::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    display: none;
+  }
+```
+* 如果想一次性跳出多个页面，并且传递数据，详见支付部分代码。
+* 除了google浏览器，其他浏览器不支持pipe，所以如果要做网页，不可以使用pipe
+* 如果想从某一子页面跳转到tab的根页面，使用
+```
+this.navCtrl['rootNav'].push(TabsPage, {tabIndex: 1});
+```
+   然后在tabs动态改变index:
+```
+this.mySelectedIndex = navParams.data.tabIndex || 0;
+   <ion-tabs  [selectedIndex]="mySelectedIndex"></ion-tabs>
+```
+* 一页一页往回跳，pop()没有参数,dismiss()可以传参。一次跳转多页popTo(),remove()都不可传参。
+* window要用(<any>window)
+* 如果进入APP之前需要调用相关配置参数，请先调用接口再指定根页面，否则会遇到数据还未请求来，就进入页面了。可能导致数据获取不到的问题。
+
 ###参考资料：<br>
 * 官网：http://ionicframework.com/
 * github:github.com/driftyco/ionic
