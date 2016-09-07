@@ -1,0 +1,67 @@
+
+<ion-content padding class="home" (swipeLeft)="pageChange()" (pinch)="pinch()">
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content
+	      pullingIcon="arrow-dropdown"
+	      pullingText="Pull to refresh"
+	      refreshingSpinner="circles"
+	      refreshingText="Refreshing...">
+      </ion-refresher-content>
+	</ion-refresher>
+	<button clear class="msg-button" (click)="showMsg()">
+		<ion-icon name="text-outline"></ion-icon>
+		<ion-badge item-right danger>3</ion-badge>
+		<span class="msg">消息</span>
+	</button>
+	<ion-slides [options]="mySlideOptions">
+		<ion-slide *ngFor="let item of bannerList">
+			<img src="{{item.imgurl}}"></ion-slide>
+	</ion-slides>
+	<div class="index-title">
+		<img src="./images/knowlege.png">
+		<span>医疗知识</span>
+	</div>
+	<div class="index-grid">
+		<div class="index-grid-left">
+			<div *ngFor="let item of knowLItems" (click)="knowContent(item)">
+				<span>{{item.title}}</span>
+				<img src="{{item.imgurl}}"></div>
+		</div>
+		<div class="index-grid-right">
+			<div *ngFor="let item of knowRItems" (click)="knowContent(item)">
+				<span>{{item.title}}</span>
+				<img src="{{item.imgurl}}"></div>
+		</div>
+	</div>
+	<div class="cut-line"></div>
+	<div class="index-title">
+		<img src="./images/index_news.png">
+		<span>最新资讯</span>
+	</div>
+	<ion-list>
+		<ion-item *ngFor="let item of items;let i = index">
+			<div (click)="infoContent(item)">
+				<img src="{{item.imgurl}}" class="index-info-img">
+				<span class="introduce">{{item.introduce}}</span>
+			</div>
+			<div class="icons">
+				<div>
+					<ion-note>{{item.datetime}}</ion-note>
+				</div>
+				<div (click)="reply(i)">
+					<img src="./images/replyicon.png">
+					<div class="number">{{item.reply_num}}</div>
+				</div>
+				<div (click)="like(i)">
+					<img src="./images/support.png">
+					<div class="number">{{item.like_num}}</div>
+				</div>
+			</div>
+		</ion-item>
+	</ion-list>
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+		<ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data..."></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>

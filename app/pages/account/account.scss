@@ -1,0 +1,62 @@
+.account {
+
+}
+
+//用户信息列表
+.user-info{
+	span{
+		padding-left:10px;
+		font-size: 1.6rem;
+	}
+	.my-avatar{
+		display: inline;
+		height: 6rem;
+		width: 6rem;
+		float:right;
+		border-radius: 3rem;
+	}
+	.user-nickname,.user-sex{
+		float: right;
+	}
+}
+.user-info-first{
+	ion-label{
+		height: 6rem;
+		line-height: 6rem;
+	}
+}
+
+//用户信息选择盒子
+.select-wrap{
+	width:100%;
+	height:100%;
+	position:absolute;
+	left:0;
+	top:0;
+	background-color:$black;
+	.select-box{
+		width:80%;
+		margin:40% auto;
+		.sex-margin-left{
+			margin-left:20px;
+		}
+		.select-img{
+			float:right;
+		}
+	}
+
+	.input-nickname{
+		text-align: center;
+	}
+
+	.input{
+		padding:0 30px;
+	}
+
+	.nickname-btn{
+		text-align:center;
+		span{
+			padding:10px 20px;
+		}
+	}
+}

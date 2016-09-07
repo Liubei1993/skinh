@@ -1,0 +1,39 @@
+.account {
+
+}
+
+//登录头像
+.login-avatar{
+	width:100%;
+	text-align:center;
+	background-color:$gray;
+	img{
+		width:30%;
+		margin:20px 0;
+	}
+}
+
+//输入框
+.login-input{
+	margin:0;
+	.login-label{
+		font-size:2rem;
+		margin-left:10px;
+	}
+}
+
+//底部按钮
+.login-toolbar{
+	background-color:$gray;
+	padding:40px 0 100px 0;
+	button:first-child{
+		margin:0 auto;
+		width:80%;
+	}
+	button:nth-child(2){
+		float:left;
+	}
+	button:nth-child(3){
+		float:right;
+	}
+}

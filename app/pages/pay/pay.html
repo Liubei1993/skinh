@@ -1,0 +1,29 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>选择支付方式</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<div class="pay-top">
+		<img src="./images/totalmoney@2x.png">
+		<div>10.00元</div>
+		<div>{{name}}</div>
+	</div>
+	<ion-list>
+		<ion-item class="pay-item" (click)="paySuccess()">
+			<img src="./images/ailipay.png">
+			支付宝支付
+			<ion-icon name="arrow-forward" item-right></ion-icon>
+		</ion-item>
+		<ion-item class="pay-item" (click)="paySuccess()">
+			<img src="./images/uniounpay.png">
+			银行卡支付
+			<ion-icon name="arrow-forward" item-right></ion-icon>
+		</ion-item>
+		<ion-item class="pay-item" (click)="payFail()">
+			<img src="./images/weixinpay.png">
+			微信支付
+			<ion-icon name="arrow-forward" item-right></ion-icon>
+		</ion-item>
+	</ion-list>
+</ion-content>

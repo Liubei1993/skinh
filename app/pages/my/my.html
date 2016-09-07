@@ -1,0 +1,61 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>个人中心</ion-title>
+		<ion-buttons end>
+			<button royal>设置</button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<div class="my-topbar">
+		<div *ngIf="logined">
+			<img src="./images/hot_pic3.png" class="my-avatar">
+			<div>
+				<span class="my-nickname">阿良</span>
+				<span class="my-account" (click)="myAccount()">账户管理 ></span>
+			</div>
+		</div>
+		<div *ngIf="!logined">
+			<img src="./images/usericon@2x.png" class="my-avatar" (click)="login()">
+			<div>
+				<span class="my-nickname">未登录</span>
+			</div>
+		</div>
+	</div>
+	<ion-grid class="my-centerbar">
+		<ion-row>
+			<ion-col width-50 class="my-centerbar-item" (click)="myBlog()">
+				<img src="./images/mytopic.png" class="my-centerbar-img">
+				<div>我的发帖</div>
+			</ion-col>
+			<ion-col width-50 class="my-centerbar-item" (click)="myBuy()">
+				<img src="./images/myshop.png" class="my-centerbar-img">
+				<div>我的购买</div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	<div class="cut-line"></div>
+	<ion-list class="my-footbar">
+		<ion-item>
+			<img src="./images/bussness.png" class="my-footbar-img">
+			<span class="my-footbar-text">商务洽谈</span>
+			<ion-icon name="arrow-forward" item-right></ion-icon>
+		</ion-item>
+		<ion-item>
+			<img src="./images/share.png" class="my-footbar-img">
+			<span class="my-footbar-text">分享软件</span>
+			<ion-icon name="arrow-forward" item-right></ion-icon>
+		</ion-item>
+		<ion-item>
+			<img src="./images/aboutus.png" class="my-footbar-img">
+			<span class="my-footbar-text">关于</span>
+			<ion-icon name="arrow-forward" item-right></ion-icon>
+		</ion-item>
+		<ion-item>
+			<img src="./images/sayidea.png" class="my-footbar-img">
+			<span class="my-footbar-text">意见反馈</span>
+			<ion-icon name="arrow-forward" item-right></ion-icon>
+		</ion-item>
+	</ion-list>
+</ion-content>

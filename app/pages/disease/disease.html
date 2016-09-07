@@ -1,0 +1,138 @@
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>疾病信息</ion-title>
+		<ion-buttons end>
+			<button (click)="search()">
+				<ion-icon name="search"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+<ion-content padding>
+	<div padding>
+		<ion-segment [(ngModel)]="type">
+			<ion-segment-button value="disease">
+				<span>疾病介绍</span>
+			</ion-segment-button>
+			<ion-segment-button value="infor">
+				<span>疾病资讯</span>
+			</ion-segment-button>
+			<ion-segment-button value="edu">
+				<span>疾病再教育</span>
+			</ion-segment-button>
+		</ion-segment>
+	</div>
+	<div [ngSwitch]="type">
+		<ion-list *ngSwitchCase="'disease'">
+			<div class="disease">
+				<img src="{{diseaseInfo.imgurl}}" class="disease-img">
+				<div class="disease-title">{{diseaseInfo.title}}</div>
+				<div class="disease-footer">
+					<span>关注度:{{diseaseInfo.atte_num}}</span>
+					<button small *ngIf="diseaseInfo.atte == 0" (click)="attention()">+关注</button>
+				</div>
+			</div>
+			<div class="disease-imglist">
+				<img src="{{diseaseInfo.imgItems[0].imgurl}}">
+				<img src="{{diseaseInfo.imgItems[1].imgurl}}">
+				<img src="{{diseaseInfo.imgItems[2].imgurl}}">
+			</div>
+			<div class="edu-introduce">{{diseaseInfo.introduce}}</div>
+			<div class="disease-block-title">用药介绍</div>
+			<ion-item *ngFor="let item of diseaseInfo.drugItems;let i = index">
+				<img src="{{item.imgurl}}" class="index-info-img">
+				<span class="edu-title">{{item.title}}</span>
+				<span class="edu-intro">{{item.introduce}}</span>
+			</ion-item>
+			<div class="disease-block-title">良方介绍</div>
+			<ion-item *ngFor="let item of diseaseInfo.methItems;let i = index">
+				<div class="disease-drug-title">{{item.title}}</div>
+				<img src="{{item.imgurl}}" class="index-info-img">
+				<span class="edu-intro">{{item.introduce}}</span>
+				<div [ngSwitch]="item.buy">
+					<div *ngSwitchCase="0">
+						<div class="disease-meth-footer">
+							<span>￥{{item.price}}</span>
+							<button small (click)="buyMethod(item,i);" class="buy-btn">去购买</button>
+						</div>
+					</div>
+					<div *ngSwitchCase="1" class="disease-meth-content">
+						<div>{{item.content}}</div>
+					</div>
+				</div>
+			</ion-item>
+			<div class="disease-block-title">医师介绍</div>
+			<ion-item *ngFor="let item of diseaseInfo.docItems;let i = index">
+				<img src="{{item.imgurl}}" class="index-info-img">
+				<span class="edu-title">{{item.title}}</span>
+				<span class="edu-intro">{{item.introduce}}</span>
+			</ion-item>
+			<div class="disease-block-title">用户评论</div>
+			<ion-item *ngFor="let item of replyItems;let i = index" class="reply-item">
+				<ion-avatar class="reply-avatar">
+					<img src="{{item.imgurl}}">
+				</ion-avatar>
+				<h2 class="reply-nickname">{{item.nickname}}<ion-note class="reply-datetime">{{item.datetime}}</ion-note></h2>
+				<h2 class="reply-content">{{item.content}}</h2>
+				<div *ngIf="item.imgItems" class="reply-img">
+					<img *ngFor="let img of item.imgItems" src="{{img.imgurl}}">
+				</div>
+			</ion-item>
+				<ion-infinite-scroll (ionInfinite)="replyDoInfinite($event)">
+					<ion-infinite-scroll-content
+			      loadingSpinner="bubbles"
+			      loadingText="Loading more data..."></ion-infinite-scroll-content>
+				</ion-infinite-scroll>
+		</ion-list>
+		<ion-list *ngSwitchCase="'infor'">
+			<div class="disease-info-order">
+				<span (click)="orderTime()" [class.order-active]="ordertime">时间最新</span>
+				<span (click)="orderLike()" [class.order-active]="orderlike">内容最赞</span>
+			</div>
+			<ion-item *ngFor="let item of infoItems;let i = index">
+				<div (click)="infoContent(item)">
+					<img src="{{item.imgurl}}" class="index-info-img">
+					<span class="introduce">{{item.introduce}}</span>
+				</div>
+				<div class="icons">
+					<div>
+						<ion-note>{{item.datetime}}</ion-note>
+					</div>
+					<div (click)="reply(i)">
+						<img src="./images/replyicon.png">
+						<div class="number">{{item.reply_num}}</div>
+					</div>
+					<div (click)="like(i)">
+						<img src="./images/support.png">
+						<div class="number">{{item.like_num}}</div>
+					</div>
+				</div>
+			</ion-item>
+			<ion-infinite-scroll (ionInfinite)="inforDoInfinite($event)">
+				<ion-infinite-scroll-content></ion-infinite-scroll-content>
+			</ion-infinite-scroll>
+		</ion-list>
+		<ion-list *ngSwitchCase="'edu'">
+			<div class="edu-introduce">{{eduIntroduce}}</div>
+			<div class="cut-line"></div>
+			<ion-item *ngFor="let item of eduItems;let i = index">
+				<span class="edu-img-title">{{item.title}}</span>
+				<img src="{{item.imgurl}}" class="index-info-img">
+				<span class="edu-title">{{item.title}}</span>
+				<span class="edu-intro">{{item.introduce}}</span>
+				<div [ngSwitch]="item.buy" class="buy">
+					<div *ngSwitchCase="0">
+						<div class="disease-meth-footer">
+							<span>￥{{item.price}}</span>
+							<button small (click)="buyEdu(item,i);" class="buy-btn">去购买</button>
+						</div>
+					</div>
+					<div *ngSwitchCase="1" (click)="eduContent(item)" class="edu-more">
+					点击查看>
+					</div>
+				</div>
+			</ion-item>
+		</ion-list>
+	</div>
+</ion-content>

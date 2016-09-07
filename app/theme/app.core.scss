@@ -1,0 +1,24 @@
+//引导页
+@import "../pages/tutorial/tutorial";
+// 首页
+@import "../pages/home/home";
+//消息
+@import "../pages/home/msg";
+//图文详情页
+@import "../pages/content/content";
+//分类
+@import "../pages/cate/cate";
+//疾病详情
+@import "../pages/disease/disease";
+//支付页面
+@import "../pages/pay/pay";
+//社区
+@import "../pages/blog/blog";
+//个人中心
+@import "../pages/my/my";
+//个人信息
+@import "../pages/account/account";
+//登录页面
+@import "../pages/account/login";
+//公用
+@import "./app.public.scss";

@@ -1,0 +1,100 @@
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>账户管理</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+	<ion-list>
+		<ion-item class="user-info user-info-first" (click)="showSelectBox('avatar')">
+			<span>用户头像</span>
+			<img src="{{user.imgurl}}" class="my-avatar">
+			<ion-icon name="arrow-forward" item-right></ion-icon>
+		</ion-item>
+		<ion-item class="user-info" (click)="showSelectBox('nickname')">
+			<span>用户昵称</span>
+			<span class="user-nickname">{{user.nickname}}</span>
+			<ion-icon name="arrow-forward" item-right></ion-icon>
+		</ion-item>
+		<ion-item class="user-info" (click)="showSelectBox('sex')">
+			<span>性别</span>
+			<span class="user-sex">{{user.sex}}</span>
+			<ion-icon name="arrow-forward" item-right></ion-icon>
+		</ion-item>
+		<ion-item class="user-info" (click)="contact()">
+			<span>修改密码</span>
+			<ion-icon name="arrow-forward" item-right></ion-icon>
+		</ion-item>	
+		<ion-item>
+			<a href="tel:+86-1515-410-2101">打电话</a>
+			<button (click)="callIT('tel:+86-1515-410-2101')">call function</button>
+			<button (click)="savePage()">保存图片</button>
+			<button (click)="getVersion()">APP版本</button>
+			<button (click)="getCode()">扫描二维码</button>
+			<button (click)="getBattery()">电池电量</button>
+			<button (click)="setLight()">屏幕亮度</button>
+			<button (click)="getDevice()">设备信息</button>
+			<button (click)="startLight()">打开手电筒</button>
+			<button (click)="stopLight()">关闭手电筒</button>
+			<button (click)="screenHot()">截屏</button>
+			<button (click)="shake()">摇一摇</button>
+			<button (click)="sim()">sim卡信息</button>
+			<button (click)="sms()">发短信</button>
+			<img src="{{downloadImgUrl}}">
+			<img src="{{screenshotUrl}}">
+		</ion-item>
+	</ion-list>
+	<div class="select-wrap" [hidden]="avatarShow">
+		<div class="select-box">
+			<ion-list>
+				<ion-item>
+					<span class="sex-margin-left">修改头像</span>
+				</ion-item>
+				<ion-item (click)="ablum()">
+					<img src="./images/ablum.png" class="sex-margin-left">
+					<span class="sex-margin-left">相册</span>
+				</ion-item>
+				<ion-item (click)="camera()">
+					<img src="./images/camera.png" class="sex-margin-left">
+					<span class="sex-margin-left">拍照</span>
+				</ion-item>
+			</ion-list>
+		</div>
+	</div>	
+	<div class="select-wrap" [hidden]="sexShow">
+		<div class="select-box">
+			<ion-list>
+				<ion-item>
+					<span class="sex-margin-left">请选择性别</span>
+				</ion-item>
+				<ion-item (click)="changeSex('男')">
+					<img src="./images/sex_boy.png" class="sex-margin-left">
+					<span>男</span>
+					<img  *ngIf="user.sex == '男'" src="./images/select.png" class="select-img">
+				</ion-item>
+				<ion-item (click)="changeSex('女')">
+					<img src="./images/sex_girl.png" class="sex-margin-left">
+					<span>女</span>
+					<img  *ngIf="user.sex == '女'" src="./images/select.png" class="select-img">
+				</ion-item>
+			</ion-list>
+		</div>
+	</div>	
+	<div class="select-wrap" [hidden]="nicknameShow">
+		<div class="select-box">
+			<ion-list no-lines>
+				<ion-item class="input-nickname">
+					<span>请输入新的昵称</span>
+				</ion-item>
+				<ion-item class="input">
+					<ion-input type="text" value="" [(ngModel)]="newNickname" placeholder="可由中英文、数字、“-”组成"></ion-input>
+				</ion-item>
+				<ion-item (click)="changeNickname()" class="nickname-btn">
+					<button class="nickname-btn">确定</button>
+				</ion-item>
+			</ion-list>
+		</div>
+	</div>
+</ion-content>

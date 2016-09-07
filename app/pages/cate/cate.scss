@@ -1,0 +1,49 @@
+//================头部开始===================
+.cate-navbar{
+	text-align:center;
+}
+
+//去除滚动条
+.scroll-segment{
+  ::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    display: none;
+  }
+}
+//================关注列表开始===================
+//解决ios上border-bottom被覆盖的bug
+.parentType{
+	.segment-button.activated, .segment-button.segment-activated{
+		z-index:2;
+	}
+}
+//列表
+.cate-item{
+	max-width:50%;
+	text-align:center;
+	float:left;
+	div.item-inner{
+		padding:0 8px;
+		div{
+			ion-label{
+				margin:0;
+			}
+		}
+	}
+}
+
+//文字
+.cate-title{
+	position:absolute;
+	left:20px;
+	top:10px;
+	color:color($colors,light);
+	font-size:1.5rem;
+}
+
+//删除按钮
+.cate-delete-icon{
+	position:absolute;
+	left:0;
+	top:-4px;
+}

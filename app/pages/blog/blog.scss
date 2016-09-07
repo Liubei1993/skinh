@@ -1,0 +1,82 @@
+
+//===============轮播图相关===========
+.blog{
+	ion-slides{
+		height:22%;
+	}
+}
+
+//=============话题相关===============
+.topic-more{
+	font-size:1.2rem;
+	color:$theming;
+	position: absolute;
+	right:5px;
+	height:20px;
+	line-height:20px;
+}
+
+.topic-list{
+	margin-bottom:5px;
+	.topic-item{
+		position:relative;
+		.topic-img{
+			padding:0 5px;
+			width: 100%;
+		}
+		.topic-hot{
+			position:absolute;
+			right:10px;
+			top:10px;
+			color:color($colors,light);
+		}
+		.topic-bottom{
+			padding:15px 5px 10px 5px;
+			position:absolute;
+			right:5px;
+			left:5px;
+			bottom:5px;
+			color:color($colors,light);
+			white-space:nowrap;
+			background-color: $black;
+		}
+	}
+	.item-inner{
+		padding:0;
+	}
+	ion-label{
+		margin:0;
+	}
+}
+
+//=============帖子相关===============
+.blog-list{
+	margin:5px;
+	.blog-list-img{
+		width:30%;
+		margin:0 4px 0 0;
+	}
+	.blog-nickname{
+		color:$theming;
+	}
+	.blog-datetime{
+		font-size:1.4rem;
+		color:gray;
+	}
+	.blog-reply-list{
+		ion-label{
+			margin:5px 0;
+		}
+		.item{
+			min-height:2rem;
+		}
+		margin:0;
+	}
+	.blog-toolbar{
+		padding:0;
+		text-align: center;
+		ion-col{
+			padding:0;
+		}
+	}
+}

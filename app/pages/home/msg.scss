@@ -1,0 +1,69 @@
+/*=================tab按钮相关==================*/
+//默认
+.segment-button{
+	border:none;
+	color:color($colors,dark);
+	font-size:16px;
+	font-weight:600;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    height: 4.2rem;
+    line-height: 4rem;
+    border-bottom: 2px solid $gray;
+    -webkit-transition: 100ms all linear;
+    transition: 100ms all linear;
+	span{
+		display: inline-block;
+		height:30px;
+		margin-top: 10px;
+	}
+}
+// 选中
+.segment-button.activated, .segment-button.segment-activated{
+	border-color: $theming;
+	color:$theming;
+	background-color:#fff;
+	z-index:1;
+}
+
+/*=================消息列表相关==================*/
+//左侧图片
+.index-msg-img{
+	max-width:25%;
+	float:left;
+	margin:0 10px;
+}
+//红点
+.msg-red{
+	position:absolute;
+	left:20%;
+}
+//单行显示
+.index-msg{
+	white-space:nowrap;
+}
+.index-msg-title{
+	height:36px;
+	overflow:hidden;
+}
+.index-msg-introduce{
+	font-size:14px;
+	display:block;
+}
+//底部按钮
+.index-msg-icons{
+	position:absolute;
+	width:73%;
+	bottom:14px;
+	left:28%;
+	div{
+		font-size:13px;
+	};
+	div.index-msg-more{
+		position:absolute;
+		top:0;
+		right:10px;
+	}
+}

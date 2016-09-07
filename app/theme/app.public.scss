@@ -1,0 +1,80 @@
+/*
+下面代码为底部导航控制，点击之后为*-outline类，改变图片即可
+*/
+.ion-ios-home:before {
+    content: url("../../images/icon/index_select.png");
+}
+
+.ion-ios-home-outline:before {
+    content: url("../../images/icon/index_unselect.png");
+}
+
+.ion-ios-keypad:before {
+    content: url("../../images/icon/category_select.png");
+}
+
+.ion-ios-keypad-outline:before {
+    content: url("../../images/icon/category_unselect.png");
+}
+
+.ion-ios-chatboxes:before {
+    content: url("../../images/icon/commit_select.png");
+}
+
+.ion-ios-chatboxes-outline:before {
+    content: url("../../images/icon/commintuy_unselect.png");
+}
+
+.ion-ios-person:before {
+    content: url("../../images/icon/own_select.png");
+}
+
+.ion-ios-person-outline:before {
+    content: url("../../images/icon/own_unselect.png");
+}
+
+//下面的语句可清除所有页面的滚动条
+  // ::-webkit-scrollbar,
+  // *::-webkit-scrollbar {
+  //   display: none;
+  // }
+
+//分割线公用类
+.cut-line{
+	width:100%;
+	height:10px;
+	background-color:$gray;
+}
+
+//红点
+.redPoint{
+  width:14px;
+  height:14px;
+  border-radius: 7px;
+  background-color:red;
+}
+
+//===============头部相关===============
+// 背景
+.toolbar-background{
+  background: $theming;
+}
+// 图标、文字颜色
+.bar-button-default,.toolbar-title{
+  color:color($colors,light);
+}
+
+//文字居中
+ion-title{
+  position:absolute;
+  padding: 0 90px 1px;//防止标题过长
+  width:100%;
+  height:100%;
+  left:0;
+  top:0;
+  z-index:-1;//防止返回按钮被覆盖
+}
+.toolbar-title{
+  text-align:center;
+}
+

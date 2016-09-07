@@ -1,0 +1,60 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>消息</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+<div padding>
+	<ion-segment [(ngModel)]="msg">
+		<ion-segment-button value="system">
+			<span>系统消息</span>
+		</ion-segment-button>
+		<ion-segment-button value="user">
+			<span>用户消息</span>
+		</ion-segment-button>
+	</ion-segment>
+</div>
+<div [ngSwitch]="msg">
+	<ion-list *ngSwitchCase="'system'">
+		<ion-item-sliding *ngFor="let item of sysItems;let i=index">
+			<ion-item>
+				<img src="{{item.imgurl}}" class="index-msg-img">
+				<div class="redPoint msg-red" *ngIf="item.read == 0"></div>
+				<div class="index-msg index-msg-title">{{item.title}}</div>
+				<ion-note class="index-msg index-msg-introduce">{{item.introduce}}</ion-note>
+				<div class="index-msg-icons">
+					<div>
+						<ion-note>{{item.datetime}}</ion-note>
+					</div>
+					<div class="index-msg-more">
+						<ion-note (click)="content(item,i)">{{item.more}}</ion-note>
+					</div>
+				</div>
+			</ion-item>
+			<ion-item-options side="right">
+				<button danger (click)="delSys(i);">删除</button>
+			</ion-item-options>
+		</ion-item-sliding>
+	</ion-list>	
+		<ion-list *ngSwitchCase="'user'">
+		<ion-item-sliding *ngFor="let item of userItems;let i=index">
+			<ion-item>
+				<img src="{{item.imgurl}}" class="index-msg-img">
+				<div class="index-msg index-msg-title">{{item.title}}</div>
+				<ion-note class="index-msg index-msg-introduce">{{item.introduce}}</ion-note>
+				<div class="index-msg-icons">
+					<div>
+						<ion-note>{{item.datetime}}</ion-note>
+					</div>
+					<div class="index-msg-more">
+						<ion-note (click)="content(item,i)">{{item.more}}</ion-note>
+					</div>
+				</div>
+			</ion-item>
+			<ion-item-options side="right">
+				<button danger (click)="delUser(i);">删除</button>
+			</ion-item-options>
+		</ion-item-sliding>
+	</ion-list>	
+</div>
+</ion-content>

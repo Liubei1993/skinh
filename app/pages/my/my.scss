@@ -1,0 +1,53 @@
+.my {
+
+}
+
+//顶部个人信息
+.my-topbar{
+	.my-avatar{
+		max-height: 8rem;
+		max-width: 8rem;
+		border-radius: 4rem;
+		float:left;
+		margin:20px 10px;
+	}
+	div{
+		height:10rem;
+		line-height:10rem;
+		.my-nickname{
+			font-size: 2.8rem;
+		}
+		.my-account{
+			float:right;
+			margin-right:5px;
+		}
+	}
+}
+
+//中部按钮
+.my-centerbar{
+	padding:0;
+	text-align:center;
+	.my-centerbar-item{
+		border:solid 1px $gray;
+		border-left:none;
+		padding:10px 5px;
+	}
+	.my-centerbar-item:last-child{
+		border-right:none;
+	}
+}
+
+//底部列表
+.my-footbar{
+	.my-footbar-img{
+		position: relative;
+		top:4px;
+		margin:0 10px;
+	}
+	.my-footbar-text{
+		font-size: 2rem;
+		height:24px;
+		line-height:24px;
+	}
+}

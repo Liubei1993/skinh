@@ -1,0 +1,66 @@
+<ion-header>
+	<ion-navbar class="cate-navbar" #cateNav>
+		<img src="./images/searchbutton.png"></ion-navbar>
+</ion-header>
+
+<ion-content padding class="about" (swipeLeft)="changeTab($event)" overflow-scroll="true">
+	<div>
+		<ion-segment [(ngModel)]="type" class="parentType">
+			<ion-segment-button value="cate">
+				<span>分类</span>
+			</ion-segment-button>
+			<ion-segment-button value="atte">
+				<span>关注</span>
+			</ion-segment-button>
+		</ion-segment>
+	</div>
+	<div [ngSwitch]="type">
+		<ion-list no-lines *ngSwitchCase="'cate'">
+		<ion-scroll scrollX="true" style="height: 51px" class="scroll-segment">
+			<div>
+				<ion-segment [(ngModel)]="cateType" class="sub-segment" [style.width]="segmentWidth()">
+					<ion-segment-button *ngFor="let item of subSegmentItems" value="{{item.value}}">
+						<span>{{item.name}}</span>
+					</ion-segment-button>
+				</ion-segment>
+			</div>
+		</ion-scroll>
+			<div [ngSwitch]="cateType">
+				<ion-list no-lines *ngSwitchCase="'all'">
+					<ion-item  *ngFor="let item of allItems;let i=index" class="cate-item">
+						<div (click)="content()">
+							<img src="{{item.imgurl}}" class="cate-img">
+							<div class="cate-title">{{item.title}}</div>
+						</div>
+					</ion-item>
+				</ion-list>
+				<ion-list no-lines *ngSwitchCase="'1'">
+					<ion-item  *ngFor="let item of skinItems;let i=index" class="cate-item">
+						<div (click)="content()">
+							<img src="{{item.imgurl}}" class="cate-img">
+							<div class="cate-title">{{item.title}}</div>
+						</div>
+					</ion-item>
+				</ion-list>
+				<ion-list no-lines *ngSwitchCase="'2'">
+					<ion-item  *ngFor="let item of skinItems;let i=index" class="cate-item">
+						<div (click)="content()">
+							<img src="{{item.imgurl}}" class="cate-img">
+							<div class="cate-title">{{item.title}}</div>
+						</div>
+					</ion-item>
+				</ion-list>
+			</div>
+		</ion-list>
+		<ion-list no-lines *ngSwitchCase="'atte'">
+			<ion-item  *ngFor="let item of atteItems;let i=index" class="cate-item" (press)="press()" (click)="content()">
+				<img src="./images/deleteicon.png" class="cate-delete-icon" *ngIf="delIcon" (click)="delAtte(i)">
+				<div>
+					<img src="{{item.imgurl}}" class="cate-img">
+					<div class="cate-title">{{item.title}}</div>
+				</div>
+			</ion-item>
+		</ion-list>
+	</div>
+
+</ion-content>

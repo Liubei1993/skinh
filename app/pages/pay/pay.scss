@@ -1,0 +1,23 @@
+.pay {
+
+}
+
+//头部信息
+.pay-top{
+	text-align:center;
+	margin:20px;
+	color:$theming;
+	font-size:2rem;
+	div{
+		margin:6px;
+	}
+}
+
+//支付方式列表
+.pay-item{
+	padding-left:20px;
+	img{
+		position:relative;
+		top:2px;
+	}
+}

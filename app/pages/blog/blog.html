@@ -1,0 +1,89 @@
+
+<ion-content padding class="blog">
+	<ion-toolbar>
+		<ion-title>社区</ion-title>
+	</ion-toolbar>
+	<div class="index-title">
+		<span>每日热点</span>
+	</div>
+	<ion-slides [options]="mySlideOptions">
+		<ion-slide>
+			<img src="./images/community_banner.png"></ion-slide>
+		<ion-slide>
+			<img src="./images/community_banner.png"></ion-slide>
+		<ion-slide>
+			<img src="./images/community_banner.png"></ion-slide>
+	</ion-slides>
+	<div class="index-title">
+		<img src="./images/topicicon.png">
+		<span>话题</span>
+		<span class="topic-more">查看全部></span>
+	</div>
+	<ion-list class="topic-list" no-lines>
+	  <ion-item *ngFor="let item of topicItems" class="topic-item">
+	  		<img src="{{item.imgurl}}" class="topic-img">
+	  		<div class="topic-hot">
+	  			<img src="./images/hot_progress.png">
+	  			<span>{{item.hot}}</span>
+	  		</div>
+	  		<div class="topic-bottom">
+		  		<h2>{{item.title}}</h2>
+		  		<h3>{{item.introduce}}</h3>
+	  		</div>
+	  </ion-item>
+	</ion-list>
+	<div class="index-title">
+		<img src="./images/hottopic.png">
+		<span>今日热帖</span>
+	</div>
+	<ion-list class="blog-list">
+		<ion-item *ngFor="let item of blogItems;let i = index">
+			<h2>{{item.title}}</h2>
+			<h3>{{item.introduce}}</h3>
+			<div *ngIf="item.imgItems">
+				<img *ngFor="let img of item.imgItems" src="{{img.imgurl}}" class="blog-list-img">
+			</div>
+			<span class="blog-nickname">{{item.nickname}}</span>
+			<span class="blog-datetime">{{item.datetime}}</span>
+			<hr>
+			<div *ngIf="item.replyItems">
+				<ion-list class="blog-reply-list" no-lines>
+					<ion-item *ngFor="let reply of item.replyItems">
+						<div *ngIf="reply.keytype == 1">
+							<span class="blog-nickname">{{reply.nickname}}：</span>
+							{{reply.content}}
+						</div>
+						<div *ngIf="reply.keytype == 2">
+							<span class="blog-nickname">{{reply.nickname}}</span>
+							回复
+							<span class="blog-nickname">{{reply.keyname}}：</span>
+							{{reply.content}}
+						</div>
+					</ion-item>
+				</ion-list>
+			</div>
+			<hr>
+			<ion-grid class="blog-toolbar">
+			  <ion-row>
+			    <ion-col width-33>
+					<img src="./images/share.png">
+					<span>分享</span>
+			    </ion-col>
+			    <ion-col width-33>
+					<img src="./images/replyicon.png">
+					<span>评论</span>
+			    </ion-col>	
+    		    <ion-col width-33>
+					<img src="./images/support.png">
+					<span>点赞</span>
+			    </ion-col>
+			  </ion-row>
+			</ion-grid>
+		</ion-item>
+	</ion-list>
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+		<ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data..."></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>

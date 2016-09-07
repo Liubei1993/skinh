@@ -1,0 +1,154 @@
+/*=================消息相关==================*/
+// 图标
+[item-right]{
+	margin:0;
+}
+.msg-button{
+	position:absolute;
+	z-index:999;
+  	font-size: 2.4rem;
+  	width:30%;
+  	height:10%;
+  	color:color($colors,light);
+  	margin:0;
+  	padding:0;
+  	right:-10%;
+}
+// 角标
+ion-badge {
+    padding: 1px 6px;
+    font-size: 1rem;
+    line-height: 16px;
+    border-radius: 10px;
+    position:relative;
+    left:-1.5rem;
+    top:-0.5rem;
+}
+//文字
+.msg {
+	font-size:1rem;
+    position:relative;
+    left:-4rem;
+    top:1.3rem;
+}
+
+/*=================轮播图相关==================*/
+//轮播图配置
+.home{
+	ion-slides{
+		height:38%;
+	}
+}
+
+.slide-zoom{
+	height:100%;
+}
+
+.swiper-slide img{
+	width:100%;
+}
+
+[padding], [padding] scroll-content{
+	padding:0;
+}
+
+//控制点
+.swiper-pagination-bullet{
+	width:10px;
+	height:10px;
+	background-color: color($colors,warning);
+}
+
+/*=================医疗知识相关==================*/
+.index-title{
+	text-align:center;
+	font-size:1.5rem;
+	font-weight:600;
+	margin:10px;
+	img{
+		position:relative;
+		top:2px;
+	}
+}
+//表格
+.index-grid{
+	overflow:hidden;
+	text-align:center;
+	height:40%;
+	.index-grid-left{
+		height:100%;
+		float:left;
+		max-width:66.666%;
+		div{
+			overflow:hidden;
+			float:left;
+			height:50%;
+			max-width: 50%;
+			border:1px solid rgba(0, 0, 0, 0.12);
+			span{
+				display: block;
+				padding:10px 0;
+			};
+			img{
+				width:70%;
+			};
+		}
+	};
+	.index-grid-right{
+		float:left;
+		max-width:33.333%;
+		height:100%;
+		div{
+			overflow:hidden;
+			max-width: 100%;
+			border:1px solid rgba(0, 0, 0, 0.12);
+			span{
+				display: block;
+				padding:10px 0;
+			};
+		};
+		div:nth-child(1){
+			height:65%;
+		};
+		div:nth-child(2){
+			height:35%;
+			img{
+				width:40%;
+			}
+		}
+	}
+}
+
+/*=================最新资讯相关==================*/
+//列表
+.item{
+	padding:0;
+}
+// 文字不只一行显示
+ion-label{
+	white-space:normal;
+}
+//左侧图片
+.index-info-img{
+	max-width:25%;
+	float:left;
+	margin:0 10px;
+}
+.introduce{
+	display:block;
+	overflow:hidden;
+}	
+//底部按钮
+.icons{
+	position:absolute;
+	bottom:16px;
+	left:calc(25% + 15px);
+	div{
+		font-size:13px;
+		display:inline;
+		img{
+			position:relative;
+			top:4px;
+		}
+	};
+}
