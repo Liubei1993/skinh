@@ -66,15 +66,15 @@ this.mySelectedIndex = navParams.data.tabIndex || 0;
 自动生成icon：ionic resources --icon<br>
 自动生成启动页：ionic resources --splash<br>
 * 常用插件地址：(都没测试过，出问题请询问原作者)<br>
-支付宝：https://github.com/charleyw/cordova-plugin-alipay<br>
-(<any>window).alipay.pay({})<br>
+  支付宝：https://github.com/charleyw/cordova-plugin-alipay<br>
+  (<any>window).alipay.pay({})<br>
 
-银联：https://github.com/Santino-Wu/cordova-plugin-unionpay<br>
-(<any>window).unionpay.pay()<br>
+  银联：https://github.com/Santino-Wu/cordova-plugin-unionpay<br>
+  (<any>window).unionpay.pay()<br>
 
-微信：https://github.com/xu-li/cordova-plugin-wechat<br>
-(<any>window).Wechat.sendPaymentRequest()<br>
+  微信：https://github.com/xu-li/cordova-plugin-wechat<br>
+  (<any>window).Wechat.sendPaymentRequest()<br>
 
-qq:https://github.com/iVanPan/Cordova_QQ<br>
+  qq:https://github.com/iVanPan/Cordova_QQ<br>
 
-微博：https://github.com/iVanPan/cordova_weibo<br>
+  微博：https://github.com/iVanPan/cordova_weibo<br>
