@@ -1,6 +1,6 @@
 import {Component,ViewChild} from '@angular/core';
-import {Platform, ionicBootstrap} from 'ionic-angular';
-import { Splashscreen, StatusBar } from 'ionic-native';
+import {Platform, ionicBootstrap,NavController,Storage, LocalStorage,ToastController} from 'ionic-angular';
+import {Splashscreen, StatusBar } from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
 import {Config} from './config';
 import {Chat} from './providers/chat/chat';
@@ -13,15 +13,16 @@ import { NativeStorage } from 'ionic-native';//appu原生存储
 })
 export class MyApp {
 
+  @ViewChild('navRoot') nav: NavController;
   private rootPage: any;
-  constructor(private platform: Platform,private serve:Serve,private chat:Chat,private config:Config) {
+  private local:any;
 
-
+  constructor(private platform: Platform,private serve:Serve,private chat:Chat,private config:Config,private toastCtrl:ToastController) {
+    this.local = new Storage(LocalStorage);
     platform.ready().then(() => {
         StatusBar.styleDefault();
         Splashscreen.hide();
 
-        
         //请求初始化接口
         let params = {lastloginversion:'1.0.0'};
         let url = this.config.sys_root+'index.php/webservice/index/init';
@@ -35,16 +36,16 @@ export class MyApp {
             this.config.android_update_url = data[0].android_update_url;
             this.config.iphone_update_url = data[0].iphone_update_url;
                 //判断用户是否第一次进入app
-            // NativeStorage.getItem('entered')
-            //   .then(
-            //       data => {
+            NativeStorage.getItem('entered')
+              .then(
+                  data => {
                     this.rootPage = TabsPage;
-            //       },
-            //   error => {
-            //       //没有进入过
-            //    this.rootPage = TutorialPage;
-            //    }
-            // );
+                  },
+              error => {
+                  //没有进入过
+               this.rootPage = TutorialPage;
+               }
+            );
         });
         /*
         //初始化极光推送
@@ -103,8 +104,61 @@ export class MyApp {
         )
         */
     });
+
+    //修改android/win上的返回键
+    let obj = this;
+    platform.registerBackButtonAction(function(){
+        let page = obj.nav.getActive().instance; //当前页面
+
+        //如果当前不是tabs
+        if(!(page instanceof TabsPage)){
+          if(!obj.nav.canGoBack()){
+            exitApp();
+          }
+          return obj.nav.pop();
+        }
+        //获取tabs对象
+        let tabs = page.tabs;
+        var activeNav = tabs.getSelected();
+
+        if(!activeNav.canGoBack()){
+          exitApp();
+        }
+        return activeNav.pop();
+    }, 100);
+
+    function exitApp(){
+      //先判断用户是否已点击过一次返回，如果没有则toast提示用户再点击退出，如果有则直接退出
+      obj.local.get('exitClicked')
+        .then((data)=>{
+          if(data == 'true'){
+            obj.local.set('exitClicked',false).then(()=>{});
+            return platform.exitApp();
+          }else{
+            let toast = obj.toastCtrl.create({
+                message: '再点击一次将退出应用',
+                duration: 3000
+              });
+
+              toast.present();
+              obj.local.set('exitClicked',true).then(()=>{
+
+                //三秒之后设置为false
+                setTimeout(()=>{
+                  obj.local.set('exitClicked',false).then(()=>{});
+                },3000);
+              });
+          }
+      }).catch(
+        (error)=>{
+          alert(JSON.stringify(error));
+        }
+      );
+  }
   }
 }
+
+
 
 ionicBootstrap(MyApp,[Chat,Serve,Config],{
   tabbarPlacement: 'bottom',

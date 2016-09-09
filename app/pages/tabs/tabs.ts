@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component,ViewChild} from '@angular/core';
 import {NavParams,NavController} from 'ionic-angular';
 import {HomePage} from '../home/home';
 import {CatePage} from '../cate/cate';
@@ -10,13 +10,14 @@ import {MyPage} from '../my/my';
 })
 export class TabsPage {
 
+  @ViewChild('myTabs') tabs:any;
   private tab1Root: any;
   private tab2Root: any;
   private tab3Root: any;
   private tab4Root: any;
   public mySelectedIndex: number;
 
-  constructor(navParams: NavParams,private navCtrl:NavController) {
+  constructor(navParams: NavParams) {
     this.tab1Root = HomePage;
     this.tab2Root = CatePage;
     this.tab3Root = BlogPage;
