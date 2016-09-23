@@ -5,6 +5,7 @@ import {ContentPage} from '../content/content';
 import {TabsPage} from '../tabs/tabs';
 import {MyApp} from '../../app';
 import {Serve} from '../../providers/serve/serve';
+import * as $ from 'jquery';
 
 @Component({
   templateUrl: 'build/pages/home/home.html'
@@ -72,6 +73,12 @@ export class HomePage {
         this.getHomeBanner();
   	}
 
+    //测试jquery
+    ionViewLoaded() {
+        $('#jq').click(function(){
+          alert('aa');
+        })
+    }
     //请求轮播图接口
     getHomeBanner(){
         let params = {keytype:1};

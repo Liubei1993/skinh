@@ -7,15 +7,18 @@ import {Chat} from './providers/chat/chat';
 import {Serve} from './providers/serve/serve';
 import { TutorialPage } from './pages/tutorial/tutorial';
 import { NativeStorage } from 'ionic-native';//appu原生存储
+import * as io from "socket.io-client";//socket.io
 
 @Component({
   template: '<ion-nav #navRoot [root]="rootPage"></ion-nav>'
 })
+
 export class MyApp {
 
   @ViewChild('navRoot') nav: NavController;
   private rootPage: any;
   private local:any;
+  private socket:any;
 
   constructor(private platform: Platform,private serve:Serve,private chat:Chat,private config:Config,private toastCtrl:ToastController) {
     this.local = new Storage(LocalStorage);
@@ -89,7 +92,7 @@ export class MyApp {
             console.log(exception);
         }
 
-        //连接聊天服务器
+        //使用插件连接聊天服务器
         this.chat.connect().then(
             data=>{
               return data;
@@ -102,8 +105,24 @@ export class MyApp {
                 });
             }
         )
+
+        //使用socket.io连接聊天服务器
+        //问题：会不断的重连，发送的数据包含头部信息，目前未解决
+        this.socket = io("192.168.1.28:1241");
+        this.socket.on('connect', function () {
+            this.socket.emit('news', { hello: 'world' });
+        });
+        this.socket.on("message", function (data) {
+             console.log(data);
+             this.socket.send("消息已接受到.")
+         });
+        this.socket.on("disconnect", function () {
+             console.log("服务器端断开连接.");
+         });
         */
     });
+
+
 
     //修改android/win上的返回键
     let obj = this;

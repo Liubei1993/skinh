@@ -1,6 +1,6 @@
 export class Config{
 	public Appname 				= "chat";//软件名称
-	public sys_root 			= "http://192.168.2.105/group1/mm_skinh/";//项目根地址
+	public sys_root 			= "http://192.168.1.28/group1/mm_skinh/";//项目根地址
 	public lastloginversion		= "1.0.0";//登录所用系统版本号
 	public sys_web_service  	= "";//后台服务根路径(含版本号)
 	public sys_plugins 			= "";//插件路径
