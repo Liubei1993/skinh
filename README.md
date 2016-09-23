@@ -9,10 +9,12 @@
 ###项目：<br>
 * 极光推送集成在app.ts且测试通过。插件地址：https://github.com/jpush/jpush-phonegap-plugin<br>
 * 聊天功能仅实现了socket连接，接收数据，发送数据。具体的聊天页面没有做。插件地址:https://github.com/Tlantic/cdv-socket-plugin<br>
+集成了socket.io进行聊天，但是问题很多。如想使用，请询问原作者。<br>
 * 在个人中心页面，登录的账号密码随便填。<br>
 * 登录状态下，点击“账户管理”，里面有很多native，都已经过测试，需安装相应插件。插件地址：http://ionicframework.com/docs/v2/native/<br>
 * 支付页面，前两个是支付成功状态，最后一个是支付失败状态。<br>
 * 在app.ts里有安卓/win系统的返回键事件操作，只能返回push的页面，modal页面是直接退出应用，所以建议所有页面都用push来写。(此处感谢@    SeVen7柒 同学提供代码)
+* 本项目在homt.ts里增加了jquery及使用方法。
 
 ###启动：<br>
 * 下载项目
